@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+    <style type="text/css">
+        /*表格样式*/			
+        table {
+            /*table-layout: fixed;*/
+            /* word-break:break-all; */
+            width: 80%;
+            margin: 10px auto;
+            border-collapse: collapse;
+        }				
+        th,td {
+            text-align: center;
+            border: 1px solid #ccc;
+        }		
+        th {
+            min-width:50px;
+            font-weight: normal;
+            color:white;
+            background-color: rgb(8, 103, 193);
+            padding: 0.5em;
+        }	
+        td{
+            min-width:50px;
+            font-weight: normal;
+            /* text-align: left; */
+            padding: 0.5em;
+        }	
+        table tbody tr td a {
+            color: #06f;
+            text-decoration: none;
+        }	
+        	
+        table tbody tr td a:visited
+        {
+            color:	green;
+            text-decoration: none;
+
+        }
+        table tbody tr:nth-child(odd) {
+             /* 匹配奇数行 */
+            background-color: #F1F1F1  ;
+            color: black;
+        }
+
+        table tbody tr:nth-child(even) {
+            /* 匹配偶数行 */
+            background-color:white ;
+            color: black;
+        }
+        h1{
+            color: rgb(8, 103, 193);
+        }
+    </style>
+</head>
+<body>
+<h1 align="center">逻辑运算</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>searchLogic</th>
+            <th>说明</th>
+            <th>示例</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>空格</td>
+            <td>在搜索框中输入“空格”则表示“或”的运算逻辑</td>
+            <td>service:"ssh" service:"http"搜索ssh或http协议的数据</td>
+        </tr>
+        <tr>
+            <td>+</td>
+            <td>在搜索框中输入“+”则表示“且”的运算逻辑</td>
+            <td>device:"router"+after:"2020-01-01"搜索2020-01-01后路由器的数据</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>在搜索框中输入“-”则表示“非”的运算逻辑</td>
+            <td>country:"CN"-subdivisions:"beijing"搜索中国地区内除北京的数据</td>
+        </tr>
+        <tr>
+            <td>( )</td>
+            <td>在搜索框中输入“()”则表示“优先处理”的运算逻辑</td>
+            <td>(port:"80"+subdivisions:"加利福尼亚州")+before:"2020-01-01"搜索2020-01-01前在加利福尼亚州开放的80端口数据</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 align="center">地理位置</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>country:"CN"</td>
+            <td>搜索国家地区资产</td>
+            <td>可以使用国家缩写，也可以使用中/英文全称如country:"中国"country:"china"</td>
+        </tr>
+        <tr>
+            <td>subdivisions:"beijing"</td>
+            <td>搜索相关指定行政区的资产</td>
+            <td>中国省会支持中文及英文描述搜索如subdivisions:"北京"subdivisions:"beijing"</td>
+        </tr>
+        <tr>
+            <td>city:"changsha"</td>
+            <td>搜索相关城市资产</td>
+            <td>中国城市支持中文及英文描述搜索如city:"changsha"city:"长沙"</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h1 align="center">证书搜索</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>            
+            <td>ssl:"google"</td>
+            <td>搜索ssl证书存在"google"字符串的资产</td>
+            <td>常常用来提过产品名及公司名搜索对应目标</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 align="center">IP及域名信息相关搜索</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>           
+            <td>ip:"8.8.8.8"</td>
+            <td>搜索指定IPv4地址相关资产</td>
+            <td></td>
+        </tr>
+        <tr>           
+            <td>ip:"2600:3c00::f03c:91ff:fefc:574a"</td>
+            <td>搜索指定IPv6地址相关资产</td>
+            <td>ip:"2600:3c00::f03c:91ff:fefc:574a"</td>
+        </tr>
+        <tr>           
+            <td>cidr:52.2.254.36/24</td>
+            <td>搜索IP的C段资产</td>
+            <td>cidr:52.2.254.36/16 为IP的B段资产 cidr:52.2.254.36/8 为IP的A段资产,如cidr:52.2.254.36/16cidr:52.2.254.36/8</td>
+        </tr>
+        <tr>           
+            <td>org:"北京大学" 或者organization:"北京大学"</td>
+            <td>搜索相关组织(Organization)的资产</td>
+            <td>常常用来定位大学、结构、大型互联网公司对应IP资产</td>
+        </tr>
+        <tr>           
+            <td>isp:"China Mobile"</td>
+            <td>搜索相关网络服务提供商的资产</td>
+            <td>可结合org数据相互补充</td>
+        </tr>
+        <tr>           
+            <td>asn:42893</td>
+            <td>搜索对应ASN（Autonomous system number）自治系统编号相关IP资产</td>
+            <td></td>
+        </tr>
+        <tr>           
+            <td>port:80</td>
+            <td>搜索相关端口资产</td>
+            <td>目前不支持同时开放多端口目标搜索</td>
+        </tr>
+        <tr>           
+            <td>hostname:google.com</td>
+            <td>搜索相关IP"主机名"的资产</td>
+            <td></td>
+        </tr>
+        <tr>           
+            <td>site:baidu.com</td>
+            <td>搜索域名相关的资产</td>
+            <td>常常使用来搜索子域名匹配</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 align="center">指纹相关搜索</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>            
+            <td>app:"Cisco ASA SSL VPN"</td>
+            <td>搜索思科ASA-SSL-VPN的设备</td>
+            <td>更多的app规则请参考"导航"，在搜索框输入思科等关键词会有相关app提示</td>
+        </tr>
+        <tr>            
+            <td>service:"ssh"</td>
+            <td>搜索对应服务协议的资产</td>
+            <td>常见服务协议包括：http、ftp、ssh、telnet等等(其他服务可参考搜索结果域名侧栏聚合展示)</td>
+        </tr>
+        <tr>            
+            <td>device:"router"</td>
+            <td>搜索路由器相关的设备类型</td>
+            <td>常见类型包括router(路由器)、switch(交换机)、storage-misc(存储设备)等等(其他类型可参考搜索结果域名侧栏聚合展示)</td>
+        </tr>
+        <tr>            
+            <td>os:"RouterOS"</td>
+            <td>搜索相关操作系统</td>
+            <td>常见系统包括Linux、Windows、RouterOS、IOS、JUNOS等等(其他系统可参考搜索结果域名侧栏聚合展示)</td>
+        </tr>
+        <tr>            
+            <td>title:"Cisco"</td>
+            <td>搜索html内容里标题中存在"Cisco"的数据</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 align="center">时间节点区间搜索</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>            
+            <td>after:"2020-01-01"</td>
+            <td>搜索更新时间为"2020-01-01"以后的资产</td>
+            <td>after与before常常配合使用</td>
+        </tr>
+        <tr>            
+            <td>before:"2020-01-01"</td>
+            <td>搜索更新时间在"2020-01-01"以前的资产</td>
+            <td>after与before常常配合使用</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h1 align="center">newJarm</h1>
+<p  align="center">Jarm是一个活动的传输层安全性（TLS）服务器指纹识别工具，详情参考：https://github.com/salesforce/jarm</p>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>        
+                
+            <td>jarm: "29d29d15d29d29d00029d29d29d29dea0f89a2e5fb09e4d8e099befed92cfa"</td>
+            <td>搜索相关jarm内容的资产</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 align="center">newDig</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>        
+            <td>dig:"baidu.com 220.181.38.148"</td>
+            <td>搜索相关dig内容的资产</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 align="center">newIconhash</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>        
+            <td>iconhash:"f3418a443e7d841097c714d69ec4bcb8"</td>
+            <td>通过 md5 方式对目标数据进行解析，根据图标搜索相关内容的资产</td>
+            <td>搜索包含“google”图标的相关资产</td>
+        </tr>
+        <tr>        
+            <td>iconhash:"1941681276"</td>
+            <td>通过 mmh3 方式对目标数据进行解析，根据图标搜索相关内容的资产</td>
+            <td>搜索包含“amazon”图标的相关资产</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 align="center">newFilehash</h1>
+<table  align="center">
+    <thead>
+        <tr>
+            <th>语法</th>
+            <th>说明</th>
+            <th>注</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>        
+                
+            <td>filehash:"0b5ce08db7fb8fffe4e14d05588d49d9"</td>
+            <td>通过上传方式进行查询，根据解析的文件数据搜索相关内容的资产</td>
+            <td>搜索包含“Gitlab”解析的相关资产</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

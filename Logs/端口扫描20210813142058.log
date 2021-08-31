@@ -1,0 +1,9 @@
+91.123.203.27-- 22--ssh--Open----SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3
+
+91.123.203.27-- 3306--mysql--Open----b's\x00\x00\x00\n5.5.5-10.3.30-MariaDB-1:10.3.30+maria~focal-log\x00[\xc3\x99\x08\x00,a&6|/sw\x00\xc3\xbe\xc3\xb7!\x02\x00\xc2\xbf\xc2\x81\x15\x00\x00\x00\x00\x00\x00\x07\x00\x00\x00y}&B[%C_73<q\x00mysql_native_password\x00'
+91.123.203.27-- 25--Unknown--Open----
+91.123.203.27-- 110--Unknown--Open----
+91.123.203.27-- 80--Unknown--Open----
+91.123.203.27--11211--Memcached--Open----
+91.123.203.27-- 8004--Unknown--Open----
+91.123.203.27-- 5672--Unknown--Open----
